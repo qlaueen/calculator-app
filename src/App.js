@@ -145,7 +145,7 @@ function App() {
       <DigitButton digit="7" dispatch={dispatch}/>
       <DigitButton digit="8" dispatch={dispatch}/>
       <DigitButton digit="9" dispatch={dispatch}/>
-      <OperationButton className='special-btn' operation="x" dispatch={dispatch}/>
+      <OperationButton className='special-btn' operation="*" dispatch={dispatch}/>
       <DigitButton digit="4" dispatch={dispatch}/>
       <DigitButton digit="5" dispatch={dispatch}/>
       <DigitButton digit="4" dispatch={dispatch}/>
