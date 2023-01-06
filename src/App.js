@@ -94,21 +94,28 @@ function reducer (state, {type, payload}) {
 }
 
 function evaluate({ currentOperand, previousOperand, operation }) {
-  const current = parseFloat(currentOperand);
-  const previous = parseFloat(previousOperand);
-  if (isNaN(current) || isNaN(previous)) return '';
+  const prev = parseFloat(previousOperand)
+  const current = parseFloat(currentOperand)
+  if (isNaN(prev) || isNaN(current)) return ""
+  let computation = ""
   switch (operation) {
-    case '+':
-      return previous + current;
-    case '-':
-      return previous - current;
-    case 'x':
-      return previous * current;
-    case '÷':
-      return previous / current;
+    case "+":
+      computation = prev + current
+      break
+    case "-":
+      computation = prev - current
+      break
+    case "*":
+      computation = prev * current
+      break
+    case "÷":
+      computation = prev / current
+      break
     default:
-      return '';
+      return
   }
+
+  return computation.toString()
 }
 
 const INTEGER_FORMATTER = new Intl.NumberFormat('en-US', {
