@@ -38,14 +38,14 @@ function reducer (state, {type, payload}) {
         return {...state, 
           operation: payload.operation, 
           previousOperand: state.currentOperand, 
-          currentOperand: null};
+          currentOperand: null
+        };
       }
 
       return {...state,
-        previousOperand: evaluate(state
-        ),
-        operation: payload.operation,
-        currentOperand: null
+        previousOperand: evaluate(state),
+        operation: state.operation,
+        currentOperand: null,
       };
       
     case ACTIONS.CLEAR:
@@ -53,14 +53,15 @@ function reducer (state, {type, payload}) {
 
     case ACTIONS.EVALUATE:
       if (state.operation == null || state.currentOperand == null || state.previousOperand == null) {
-        return state;
+        return state
       }
-      return {...state,
+      return {
+        ...state,
         overwrite: true,
         previousOperand: null,
         operation: null,
         currentOperand: evaluate(state),
-      };
+      }
     
     case ACTIONS.DELETE_DIGIT:
       if (state.overwrite) {
